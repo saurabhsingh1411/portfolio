@@ -1,106 +1,142 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Saurabh Singh | Data Science Vision</title>
-  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="style.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
 </head>
-<body>
 
-  <!-- Header Section -->
-  <header id="home">
+<body>
+  <!-- ===== NAVBAR ===== -->
+  <nav class="navbar">
     <div class="container">
+      <h1 class="logo">Saurabh Singh</h1>
+      <ul class="nav-links">
+        <li><a href="#home">Home</a></li>
+        <li><a href="#about">About</a></li>
+        <li><a href="#experience">Experience</a></li>
+        <li><a href="#projects">Projects</a></li>
+        <li><a href="#certifications">Certifications</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- ===== HERO ===== -->
+  <header id="home" class="hero">
+    <div class="hero-content">
       <img src="images/saurabh.png" alt="Saurabh Singh" class="profile-pic">
-      <h1>Saurabh Singh</h1>
+      <h2>Hi, I'm <span>Saurabh Singh</span></h2>
       <h3>Sr. Manager – Data Science & AI</h3>
       <p class="tagline">Empowering Tomorrow’s Data Scientists</p>
-      <div class="contact">
+      <div class="contact-links">
         <a href="mailto:saurabhsingh.pr@gmail.com">saurabhsingh.pr@gmail.com</a> |
         <a href="https://www.linkedin.com/in/saurabhsinghds/" target="_blank">LinkedIn</a>
       </div>
     </div>
   </header>
 
-  <!-- Experience Section -->
-  <section id="experience">
-    <h2>Professional Experience</h2>
+  <!-- ===== ABOUT ===== -->
+  <section id="about" class="section">
+    <h2>About Me</h2>
+    <p>
+      I’m a Data Science professional with over 8 years of experience in analytics, AI, and ML,
+      currently leading AI initiatives at L&T Finance. I specialize in building predictive models,
+      credit risk frameworks, and generative AI solutions. My mission is to simplify AI adoption and
+      inspire the next generation of data scientists.
+    </p>
+  </section>
+
+  <!-- ===== EXPERIENCE ===== -->
+  <section id="experience" class="section">
+    <h2>Experience</h2>
     <div class="timeline">
-      <div class="job">
+      <div class="timeline-item">
         <h3>L&T Finance Ltd</h3>
-        <p><strong>Sr. Manager (ML–Analytics)</strong> | Dec 2023 – Present | Mumbai</p>
+        <p><strong>Sr. Manager (ML-Analytics)</strong> | Dec 2023 – Present | Mumbai</p>
         <ul>
           <li>Developed credit risk models (PD, LGD, EAD) and fraud detection systems.</li>
-          <li>Built predictive scorecards and segmentation tools improving decision accuracy.</li>
-          <li>Led cross-functional analytics initiatives and AI integration projects.</li>
+          <li>Built predictive scorecards improving loan recovery and targeting.</li>
         </ul>
       </div>
 
-      <div class="job">
+      <div class="timeline-item">
         <h3>Persistent Systems</h3>
         <p><strong>Engineering Lead (ML)</strong> | Jan 2022 – Dec 2023 | Mumbai</p>
         <ul>
-          <li>Designed anomaly detection for Cisco and Databricks pipelines for Chubb Insurance.</li>
-          <li>Developed classification models (95% accuracy) for text analytics.</li>
-          <li>Created Generative AI MRI analysis using CycleGANs for medical imaging.</li>
+          <li>Built Databricks pipelines and anomaly detection systems for global clients.</li>
+          <li>Pioneered Generative AI MRI analysis using CycleGANs.</li>
         </ul>
       </div>
 
-      <div class="job">
+      <div class="timeline-item">
         <h3>Honda Cars India Ltd</h3>
         <p><strong>Product Analyst</strong> | Aug 2018 – Jan 2022 | Delhi NCR</p>
         <ul>
-          <li>Performed EDA on ECU data for user behavior insights and product development.</li>
-          <li>Built ML classification models to improve driving experience and safety.</li>
+          <li>Performed EDA on ECU data to understand driving behavior and optimize product design.</li>
         </ul>
       </div>
 
-      <div class="job">
+      <div class="timeline-item">
         <h3>Escorts Kubota Ltd</h3>
         <p><strong>Assistant Manager</strong> | Jun 2016 – Aug 2018 | Delhi NCR</p>
         <ul>
-          <li>Designed and analyzed marketing/product data for data-driven decisions.</li>
+          <li>Designed marketing and product analytics dashboards to drive business insights.</li>
         </ul>
       </div>
     </div>
   </section>
 
-  <!-- Projects Section -->
-  <section id="projects">
-    <h2>Key Projects</h2>
+  <!-- ===== PROJECTS ===== -->
+  <section id="projects" class="section">
+    <h2>Projects</h2>
+    <div class="projects-grid">
+      <div class="project-card">
+        <h3>Generative AI MRI Data Generation</h3>
+        <p>Used CycleGAN to generate T1 from T2 MRI images, enhancing diagnostic accuracy.</p>
+      </div>
+      <div class="project-card">
+        <h3>Credit Risk Modelling</h3>
+        <p>Built PD and LGD frameworks for loan risk assessment and acquisition strategies.</p>
+      </div>
+      <div class="project-card">
+        <h3>Policy Intelligence Platform (PIP)</h3>
+        <p>Automated NLP classification for 200k+ insurance documents using Databricks.</p>
+      </div>
+      <div class="project-card">
+        <h3>Speech-to-Text AI</h3>
+        <p>Developed an NLP-based summarizer for CEO meeting discussions using transcripts.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== CERTIFICATIONS ===== -->
+  <section id="certifications" class="section">
+    <h2>Certifications & Education</h2>
     <ul>
-      <li><strong>Generative AI MRI Data Generation:</strong> Used CycleGAN to generate T1 from T2 images.</li>
-      <li><strong>Credit Risk Modelling:</strong> Developed customer risk models improving acquisition & management.</li>
-      <li><strong>Policy Intelligence Platform (PIP):</strong> Automated NLP classification for 200k+ insurance documents.</li>
-      <li><strong>Collection Scorecard:</strong> Enhanced debt recovery using predictive ML models.</li>
-      <li><strong>Speech-to-Text AI:</strong> Built summarization model for CEO discussions.</li>
+      <li>Databricks Certified Machine Learning Associate</li>
+      <li>TensorFlow Developer Certification</li>
+      <li>LangChain Generative AI Specialization</li>
+      <li>PGP in Data Science – IIIT Bangalore (3.76/4)</li>
+      <li>B.Tech – VIT Vellore (9.07/10)</li>
     </ul>
   </section>
 
-  <!-- Education Section -->
-  <section id="education">
-    <h2>Education</h2>
-    <ul>
-      <li><strong>PGP in Data Science – IIIT Bangalore</strong> (CGPA 3.76/4)</li>
-      <li><strong>B.Tech – VIT Vellore</strong> (CGPA 9.07/10)</li>
-      <li><strong>HSC – Maharashtra Board</strong> 75.5%</li>
-      <li><strong>SSC – Maharashtra Board</strong> 93.64% (1st Rank)</li>
-    </ul>
-  </section>
-
-  <!-- Certifications -->
-  <section id="certifications">
-    <h2>Certifications</h2>
-    <p>
-      Databricks Certified Machine Learning Associate | TensorFlow Developer |  
-      Credit Risk Modelling | LangChain GenAI | MLOps | NLP | Deep Learning
+  <!-- ===== CONTACT ===== -->
+  <section id="contact" class="section">
+    <h2>Contact</h2>
+    <p class="contact-info">
+      You can reach me at 
+      <a href="mailto:saurabhsingh.pr@gmail.com">saurabhsingh.pr@gmail.com</a> or connect with me on 
+      <a href="https://www.linkedin.com/in/saurabhsinghds/" target="_blank">LinkedIn</a>.
     </p>
   </section>
 
-  <!-- Footer -->
+  <!-- ===== FOOTER ===== -->
   <footer>
-    <p>© 2025 Saurabh Singh | Designed with 💙 Minimalism</p>
+    <p>© 2025 Saurabh Singh | Designed with 💙 using minimalism</p>
   </footer>
-
 </body>
 </html>
