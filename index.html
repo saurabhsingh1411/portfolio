@@ -3,140 +3,1095 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Saurabh Singh | Data Science Vision</title>
-  <link rel="stylesheet" href="style.css" />
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+  <title>Saurabh Singh | Portfolio</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    
+    :root {
+      --primary: #2563eb;
+      --primary-dark: #1e40af;
+      --secondary: #8b5cf6;
+      --accent: #06b6d4;
+      --dark: #0f172a;
+      --light: #f8fafc;
+      --gradient: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      --gradient-2: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+      --gradient-3: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+    }
+    
+    body {
+      font-family: 'Inter', sans-serif;
+      background: var(--light);
+      color: var(--dark);
+      line-height: 1.6;
+      scroll-behavior: smooth;
+      overflow-x: hidden;
+    }
+
+    /* Animated Background */
+    .bg-animation {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: -1;
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      opacity: 0.05;
+    }
+
+    .floating-shapes {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: -1;
+      overflow: hidden;
+    }
+
+    .shape {
+      position: absolute;
+      border-radius: 50%;
+      filter: blur(40px);
+      animation: float 20s infinite ease-in-out;
+      opacity: 0.3;
+    }
+
+    .shape:nth-child(1) {
+      width: 300px;
+      height: 300px;
+      background: var(--gradient);
+      top: 10%;
+      left: 10%;
+      animation-delay: 0s;
+    }
+
+    .shape:nth-child(2) {
+      width: 200px;
+      height: 200px;
+      background: var(--gradient-2);
+      top: 60%;
+      right: 10%;
+      animation-delay: 7s;
+    }
+
+    .shape:nth-child(3) {
+      width: 250px;
+      height: 250px;
+      background: var(--gradient-3);
+      bottom: 10%;
+      left: 50%;
+      animation-delay: 14s;
+    }
+
+    @keyframes float {
+      0%, 100% { transform: translate(0, 0) rotate(0deg); }
+      33% { transform: translate(30px, -30px) rotate(120deg); }
+      66% { transform: translate(-20px, 20px) rotate(240deg); }
+    }
+
+    /* NAVBAR */
+    .navbar {
+      position: fixed;
+      top: 0;
+      width: 100%;
+      background: rgba(255, 255, 255, 0.95);
+      backdrop-filter: blur(10px);
+      box-shadow: 0 2px 20px rgba(0,0,0,0.05);
+      z-index: 1000;
+      transition: all 0.3s ease;
+    }
+
+    .navbar.scrolled {
+      box-shadow: 0 4px 30px rgba(0,0,0,0.1);
+    }
+
+    .nav-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 20px 40px;
+    }
+
+    .logo {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 24px;
+      font-weight: 700;
+      background: var(--gradient);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .nav-links {
+      list-style: none;
+      display: flex;
+      gap: 30px;
+      align-items: center;
+    }
+
+    .nav-links a {
+      text-decoration: none;
+      color: var(--dark);
+      font-weight: 500;
+      transition: all 0.3s;
+      position: relative;
+    }
+
+    .nav-links a::after {
+      content: '';
+      position: absolute;
+      bottom: -5px;
+      left: 0;
+      width: 0;
+      height: 2px;
+      background: var(--gradient);
+      transition: width 0.3s;
+    }
+
+    .nav-links a:hover::after {
+      width: 100%;
+    }
+
+    /* HERO */
+    .hero {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 120px 40px 60px;
+      position: relative;
+    }
+
+    .hero-content {
+      max-width: 1200px;
+      text-align: center;
+      animation: fadeInUp 1s ease;
+    }
+
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(30px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .profile-pic {
+      width: 180px;
+      height: 180px;
+      border-radius: 50%;
+      border: 5px solid transparent;
+      background: linear-gradient(white, white) padding-box,
+                  var(--gradient) border-box;
+      margin-bottom: 30px;
+      box-shadow: 0 20px 60px rgba(102, 126, 234, 0.3);
+      animation: float-profile 3s ease-in-out infinite;
+    }
+
+    @keyframes float-profile {
+      0%, 100% { transform: translateY(0px); }
+      50% { transform: translateY(-20px); }
+    }
+
+    .hero h1 {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 56px;
+      font-weight: 800;
+      margin-bottom: 15px;
+      background: var(--gradient);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .hero h2 {
+      font-size: 32px;
+      color: var(--dark);
+      margin-bottom: 20px;
+      font-weight: 600;
+    }
+
+    .tagline {
+      font-size: 20px;
+      color: #64748b;
+      margin-bottom: 30px;
+      font-style: italic;
+    }
+
+    .hero-stats {
+      display: flex;
+      justify-content: center;
+      gap: 50px;
+      margin: 40px 0;
+      flex-wrap: wrap;
+    }
+
+    .stat-item {
+      text-align: center;
+    }
+
+    .stat-number {
+      font-size: 36px;
+      font-weight: 700;
+      background: var(--gradient);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .stat-label {
+      font-size: 14px;
+      color: #64748b;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+
+    .cta-buttons {
+      display: flex;
+      gap: 20px;
+      justify-content: center;
+      margin-top: 30px;
+    }
+
+    .btn {
+      padding: 15px 35px;
+      border-radius: 50px;
+      text-decoration: none;
+      font-weight: 600;
+      transition: all 0.3s;
+      display: inline-block;
+    }
+
+    .btn-primary {
+      background: var(--gradient);
+      color: white;
+      box-shadow: 0 10px 30px rgba(102, 126, 234, 0.3);
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 15px 40px rgba(102, 126, 234, 0.4);
+    }
+
+    .btn-secondary {
+      background: white;
+      color: var(--primary);
+      border: 2px solid var(--primary);
+    }
+
+    .btn-secondary:hover {
+      background: var(--primary);
+      color: white;
+    }
+
+    /* SECTIONS */
+    .section {
+      max-width: 1200px;
+      margin: 80px auto;
+      padding: 0 40px;
+    }
+
+    .section-title {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 42px;
+      font-weight: 700;
+      text-align: center;
+      margin-bottom: 20px;
+      background: var(--gradient);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .section-subtitle {
+      text-align: center;
+      color: #64748b;
+      font-size: 18px;
+      margin-bottom: 60px;
+    }
+
+    /* ABOUT */
+    .about-content {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 60px;
+      align-items: center;
+    }
+
+    .about-text {
+      font-size: 18px;
+      color: #475569;
+      line-height: 1.8;
+    }
+
+    .about-text p {
+      margin-bottom: 20px;
+    }
+
+    .quote-box {
+      background: var(--gradient);
+      padding: 30px;
+      border-radius: 20px;
+      color: white;
+      font-style: italic;
+      font-size: 20px;
+      box-shadow: 0 20px 60px rgba(102, 126, 234, 0.3);
+      position: relative;
+    }
+
+    .quote-box::before {
+      content: '"';
+      font-size: 80px;
+      position: absolute;
+      top: -20px;
+      left: 20px;
+      opacity: 0.3;
+    }
+
+    /* EXPERIENCE */
+    .timeline {
+      position: relative;
+      padding-left: 50px;
+    }
+
+    .timeline::before {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 0;
+      bottom: 0;
+      width: 3px;
+      background: var(--gradient);
+    }
+
+    .timeline-item {
+      position: relative;
+      margin-bottom: 50px;
+      background: white;
+      padding: 30px;
+      border-radius: 20px;
+      box-shadow: 0 10px 40px rgba(0,0,0,0.05);
+      transition: all 0.3s;
+    }
+
+    .timeline-item:hover {
+      transform: translateX(10px);
+      box-shadow: 0 20px 60px rgba(0,0,0,0.1);
+    }
+
+    .timeline-item::before {
+      content: '';
+      position: absolute;
+      left: -56px;
+      top: 30px;
+      width: 15px;
+      height: 15px;
+      border-radius: 50%;
+      background: var(--gradient);
+      border: 3px solid white;
+      box-shadow: 0 0 0 3px #667eea;
+    }
+
+    .timeline-item h3 {
+      color: var(--primary);
+      font-size: 24px;
+      margin-bottom: 10px;
+    }
+
+    .timeline-item .role {
+      font-weight: 600;
+      color: var(--dark);
+      margin-bottom: 5px;
+    }
+
+    .timeline-item .duration {
+      color: #64748b;
+      font-size: 14px;
+      margin-bottom: 15px;
+    }
+
+    /* SKILLS */
+    .skills-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+      gap: 20px;
+    }
+
+    .skill-card {
+      background: white;
+      padding: 25px;
+      border-radius: 15px;
+      text-align: center;
+      box-shadow: 0 10px 40px rgba(0,0,0,0.05);
+      transition: all 0.3s;
+      cursor: pointer;
+    }
+
+    .skill-card:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 20px 60px rgba(0,0,0,0.1);
+    }
+
+    .skill-card:nth-child(odd) {
+      background: linear-gradient(135deg, rgba(102, 126, 234, 0.1), rgba(118, 75, 162, 0.1));
+    }
+
+    .skill-icon {
+      font-size: 36px;
+      margin-bottom: 10px;
+    }
+
+    .skill-name {
+      font-weight: 600;
+      color: var(--dark);
+    }
+
+    /* PROJECTS */
+    .projects-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: 30px;
+    }
+
+    .project-card {
+      background: white;
+      border-radius: 20px;
+      overflow: hidden;
+      box-shadow: 0 10px 40px rgba(0,0,0,0.05);
+      transition: all 0.3s;
+      position: relative;
+    }
+
+    .project-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 5px;
+      background: var(--gradient);
+    }
+
+    .project-card:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 20px 60px rgba(0,0,0,0.15);
+    }
+
+    .project-content {
+      padding: 30px;
+    }
+
+    .project-card h3 {
+      color: var(--primary);
+      font-size: 22px;
+      margin-bottom: 15px;
+    }
+
+    .project-card p {
+      color: #475569;
+      line-height: 1.7;
+    }
+
+    .project-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 15px;
+    }
+
+    .tag {
+      background: rgba(102, 126, 234, 0.1);
+      color: var(--primary);
+      padding: 5px 15px;
+      border-radius: 20px;
+      font-size: 12px;
+      font-weight: 600;
+    }
+
+    /* HOBBIES */
+    .hobbies-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 30px;
+    }
+
+    .hobby-card {
+      background: white;
+      padding: 40px 30px;
+      border-radius: 20px;
+      text-align: center;
+      box-shadow: 0 10px 40px rgba(0,0,0,0.05);
+      transition: all 0.3s;
+    }
+
+    .hobby-card:hover {
+      transform: scale(1.05);
+      box-shadow: 0 20px 60px rgba(0,0,0,0.1);
+    }
+
+    .hobby-icon {
+      font-size: 48px;
+      margin-bottom: 20px;
+    }
+
+    .hobby-card h3 {
+      color: var(--primary);
+      margin-bottom: 10px;
+    }
+
+    /* CERTIFICATIONS */
+    .cert-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 20px;
+    }
+
+    .cert-item {
+      background: white;
+      padding: 25px;
+      border-radius: 15px;
+      box-shadow: 0 10px 40px rgba(0,0,0,0.05);
+      display: flex;
+      align-items: center;
+      gap: 20px;
+      transition: all 0.3s;
+    }
+
+    .cert-item:hover {
+      transform: translateX(10px);
+      box-shadow: 0 15px 50px rgba(0,0,0,0.1);
+    }
+
+    .cert-icon {
+      font-size: 40px;
+      color: var(--primary);
+    }
+
+    .cert-text {
+      flex: 1;
+    }
+
+    .cert-text h4 {
+      color: var(--dark);
+      margin-bottom: 5px;
+    }
+
+    .cert-text p {
+      font-size: 14px;
+      color: #64748b;
+    }
+
+    /* CONTACT */
+    .contact-content {
+      background: var(--gradient);
+      padding: 60px 40px;
+      border-radius: 30px;
+      text-align: center;
+      color: white;
+    }
+
+    .contact-content h2 {
+      font-size: 36px;
+      margin-bottom: 20px;
+    }
+
+    .contact-content p {
+      font-size: 18px;
+      margin-bottom: 30px;
+      opacity: 0.9;
+    }
+
+    .contact-links {
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+      flex-wrap: wrap;
+    }
+
+    .contact-btn {
+      background: white;
+      color: var(--primary);
+      padding: 15px 35px;
+      border-radius: 50px;
+      text-decoration: none;
+      font-weight: 600;
+      transition: all 0.3s;
+      display: inline-block;
+    }
+
+    .contact-btn:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 10px 30px rgba(255,255,255,0.3);
+    }
+
+    /* FOOTER */
+    footer {
+      background: var(--dark);
+      color: white;
+      text-align: center;
+      padding: 40px 20px;
+      margin-top: 100px;
+    }
+
+    footer p {
+      opacity: 0.7;
+    }
+
+    /* RESPONSIVE */
+    @media (max-width: 768px) {
+      .nav-links { display: none; }
+      .hero h1 { font-size: 36px; }
+      .hero h2 { font-size: 24px; }
+      .about-content { grid-template-columns: 1fr; }
+      .hero-stats { gap: 30px; }
+      .section { padding: 0 20px; }
+      .nav-container { padding: 15px 20px; }
+    }
+  </style>
 </head>
 
 <body>
-  <!-- ===== NAVBAR ===== -->
+  <div class="floating-shapes">
+    <div class="shape"></div>
+    <div class="shape"></div>
+    <div class="shape"></div>
+  </div>
+
+  <!-- NAVBAR -->
   <nav class="navbar">
-    <div class="container">
+    <div class="nav-container">
       <h1 class="logo">Saurabh Singh</h1>
       <ul class="nav-links">
         <li><a href="#home">Home</a></li>
         <li><a href="#about">About</a></li>
         <li><a href="#experience">Experience</a></li>
+        <li><a href="#skills">Skills</a></li>
         <li><a href="#projects">Projects</a></li>
-        <li><a href="#certifications">Certifications</a></li>
+        <li><a href="#hobbies">Hobbies</a></li>
         <li><a href="#contact">Contact</a></li>
       </ul>
     </div>
   </nav>
 
-  <!-- ===== HERO ===== -->
-  <header id="home" class="hero">
+  <!-- HERO -->
+  <section id="home" class="hero">
     <div class="hero-content">
       <img src="images/saurabh1.png" alt="Saurabh Singh" class="profile-pic">
-      <h2>Hi, I'm <span>Saurabh Singh</span></h2>
-      <h3>Sr. Manager – Data Science & AI</h3>
-      <p class="tagline">Empowering Tomorrow’s Data Scientists</p>
-      <div class="contact-links">
-        <a href="mailto:saurabhsingh.pr@gmail.com">saurabhsingh.pr@gmail.com</a> |
-        <a href="https://www.linkedin.com/in/saurabhsinghds/" target="_blank">LinkedIn</a>
+      <h1>Saurabh Singh</h1>
+      <h2>Sr. Manager – Data Science & AI</h2>
+      <p class="tagline">"Transforming Data into Intelligence, One Model at a Time"</p>
+      
+      <div class="hero-stats">
+        <div class="stat-item">
+          <div class="stat-number">8+</div>
+          <div class="stat-label">Years Experience</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-number">20+</div>
+          <div class="stat-label">Projects Delivered</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-number">10+</div>
+          <div class="stat-label">Certifications</div>
+        </div>
+      </div>
+
+      <div class="cta-buttons">
+        <a href="#contact" class="btn btn-primary">Get In Touch</a>
+        <a href="https://www.linkedin.com/in/saurabhsinghds/" target="_blank" class="btn btn-secondary">View LinkedIn</a>
       </div>
     </div>
-  </header>
-
-  <!-- ===== ABOUT ===== -->
-  <section id="about" class="section">
-    <h2>About Me</h2>
-    <p>
-      I’m a Data Science professional with over 8 years of experience in analytics, AI, and ML,
-      currently leading AI initiatives at L&T Finance. I specialize in building predictive models,
-      credit risk frameworks, and generative AI solutions. My mission is to simplify AI adoption and
-      inspire the next generation of data scientists.
-    </p>
   </section>
 
-  <!-- ===== EXPERIENCE ===== -->
+  <!-- ABOUT -->
+  <section id="about" class="section">
+    <h2 class="section-title">About Me</h2>
+    <p class="section-subtitle">Building AI Solutions That Matter</p>
+    <div class="about-content">
+      <div class="about-text">
+        <p>
+          I'm a passionate Data Science professional with over 8 years of experience in analytics, AI, and ML. 
+          Currently leading AI initiatives at L&T Finance, I specialize in building predictive models, 
+          credit risk frameworks, and cutting-edge generative AI solutions.
+        </p>
+        <p>
+          My journey began with a B.Tech from VIT Vellore and advanced through a PGP in Data Science from IIIT Bangalore. 
+          From automotive analytics at Honda to pioneering GenAI applications at Persistent Systems, 
+          I've consistently delivered data-driven solutions that create real business impact.
+        </p>
+        <p>
+          My mission is to democratize AI adoption and inspire the next generation of data scientists through 
+          mentorship, innovation, and practical problem-solving.
+        </p>
+      </div>
+      <div class="quote-box">
+        "In the world of data, every challenge is an opportunity to innovate. 
+        The algorithms we build today shape the decisions of tomorrow."
+        <div style="text-align: right; margin-top: 15px; font-size: 16px;">— Saurabh Singh</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- EXPERIENCE -->
   <section id="experience" class="section">
-    <h2>Experience</h2>
+    <h2 class="section-title">Professional Journey</h2>
+    <p class="section-subtitle">8+ Years of Innovation Across BFSI, IT & Manufacturing</p>
     <div class="timeline">
       <div class="timeline-item">
         <h3>L&T Finance Ltd</h3>
-        <p><strong>Sr. Manager (ML-Analytics)</strong> | Dec 2023 – Present | Mumbai</p>
+        <p class="role">Sr. Manager (ML-Analytics) - CAIDO Office</p>
+        <p class="duration">Dec 2023 – Present | Mumbai</p>
         <ul>
-          <li>Developed credit risk models (PD, LGD, EAD) and fraud detection systems.</li>
-          <li>Built predictive scorecards improving loan recovery and targeting.</li>
+          <li>Leading credit risk modeling initiatives (PD, LGD, EAD frameworks) and fraud detection systems</li>
+          <li>Built predictive scorecards improving loan recovery rates by identifying high-risk segments</li>
+          <li>Developed customer segmentation models for home and two-wheeler loans using PhonePe/Cred data</li>
+          <li>Spearheaded cross-functional analytics initiatives driving data-driven decision making</li>
         </ul>
       </div>
 
       <div class="timeline-item">
         <h3>Persistent Systems</h3>
-        <p><strong>Engineering Lead (ML)</strong> | Jan 2022 – Dec 2023 | Mumbai</p>
+        <p class="role">Engineering Lead (ML)</p>
+        <p class="duration">Jan 2022 – Dec 2023 | Mumbai</p>
         <ul>
-          <li>Built Databricks pipelines and anomaly detection systems for global clients.</li>
-          <li>Pioneered Generative AI MRI analysis using CycleGANs.</li>
+          <li>Designed Python-based anomaly detection system for Cisco router migration</li>
+          <li>Built Databricks pipeline for Chubb Insurance reducing text analytics time by 70%</li>
+          <li>Developed classification model with 95% accuracy for policy document mapping</li>
+          <li>Pioneered GenAI use case for MRI analysis using CycleGANs</li>
         </ul>
       </div>
 
       <div class="timeline-item">
         <h3>Honda Cars India Ltd</h3>
-        <p><strong>Product Analyst</strong> | Aug 2018 – Jan 2022 | Delhi NCR</p>
+        <p class="role">Product Analyst</p>
+        <p class="duration">Aug 2018 – Jan 2022 | Delhi NCR</p>
         <ul>
-          <li>Performed EDA on ECU data to understand driving behavior and optimize product design.</li>
+          <li>Conducted EDA on ECU data to analyze user behavior and driving patterns</li>
+          <li>Built ML classification model to categorize users based on driving behavior</li>
+          <li>Analyzed engine performance metrics driving product quality improvements</li>
         </ul>
       </div>
 
       <div class="timeline-item">
         <h3>Escorts Kubota Ltd</h3>
-        <p><strong>Assistant Manager</strong> | Jun 2016 – Aug 2018 | Delhi NCR</p>
+        <p class="role">Assistant Manager</p>
+        <p class="duration">Jun 2016 – Aug 2018 | Delhi NCR</p>
         <ul>
-          <li>Designed marketing and product analytics dashboards to drive business insights.</li>
+          <li>Designed marketing and product analytics dashboards</li>
+          <li>Drove data-informed decisions enhancing campaign effectiveness</li>
         </ul>
       </div>
     </div>
   </section>
 
-  <!-- ===== PROJECTS ===== -->
-  <section id="projects" class="section">
-    <h2>Projects</h2>
-    <div class="projects-grid">
-      <div class="project-card">
-        <h3>Generative AI MRI Data Generation</h3>
-        <p>Used CycleGAN to generate T1 from T2 MRI images, enhancing diagnostic accuracy.</p>
+  <!-- SKILLS -->
+  <section id="skills" class="section">
+    <h2 class="section-title">Technical Arsenal</h2>
+    <p class="section-subtitle">Mastery Across the AI/ML Ecosystem</p>
+    <div class="skills-grid">
+      <div class="skill-card">
+        <div class="skill-icon">🐍</div>
+        <div class="skill-name">Python</div>
       </div>
-      <div class="project-card">
-        <h3>Credit Risk Modelling</h3>
-        <p>Built PD and LGD frameworks for loan risk assessment and acquisition strategies.</p>
+      <div class="skill-card">
+        <div class="skill-icon">🗄️</div>
+        <div class="skill-name">SQL</div>
       </div>
-      <div class="project-card">
-        <h3>Policy Intelligence Platform (PIP)</h3>
-        <p>Automated NLP classification for 200k+ insurance documents using Databricks.</p>
+      <div class="skill-card">
+        <div class="skill-icon">🤖</div>
+        <div class="skill-name">Machine Learning</div>
       </div>
-      <div class="project-card">
-        <h3>Speech-to-Text AI</h3>
-        <p>Developed an NLP-based summarizer for CEO meeting discussions using transcripts.</p>
+      <div class="skill-card">
+        <div class="skill-icon">🧠</div>
+        <div class="skill-name">Deep Learning</div>
+      </div>
+      <div class="skill-card">
+        <div class="skill-icon">✨</div>
+        <div class="skill-name">Gen AI</div>
+      </div>
+      <div class="skill-card">
+        <div class="skill-icon">🔗</div>
+        <div class="skill-name">LangChain</div>
+      </div>
+      <div class="skill-card">
+        <div class="skill-icon">📊</div>
+        <div class="skill-name">Data Analytics</div>
+      </div>
+      <div class="skill-card">
+        <div class="skill-icon">☁️</div>
+        <div class="skill-name">GCP/AWS</div>
+      </div>
+      <div class="skill-card">
+        <div class="skill-icon">⚡</div>
+        <div class="skill-name">Databricks</div>
+      </div>
+      <div class="skill-card">
+        <div class="skill-icon">🔄</div>
+        <div class="skill-name">MLOps</div>
+      </div>
+      <div class="skill-card">
+        <div class="skill-icon">📈</div>
+        <div class="skill-name">Statistics</div>
+      </div>
+      <div class="skill-card">
+        <div class="skill-icon">💳</div>
+        <div class="skill-name">Credit Risk</div>
       </div>
     </div>
   </section>
 
-  <!-- ===== CERTIFICATIONS ===== -->
+  <!-- PROJECTS -->
+  <section id="projects" class="section">
+    <h2 class="section-title">Featured Projects</h2>
+    <p class="section-subtitle">Innovative Solutions Driving Business Impact</p>
+    <div class="projects-grid">
+      <div class="project-card">
+        <div class="project-content">
+          <h3>🧬 GenAI MRI Data Generation</h3>
+          <p>Pioneered CycleGAN implementation to generate T1 from T2 MRI images, reducing imaging costs and enhancing diagnostic accuracy in medical imaging.</p>
+          <div class="project-tags">
+            <span class="tag">CycleGAN</span>
+            <span class="tag">Medical AI</span>
+            <span class="tag">Deep Learning</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="project-card">
+        <div class="project-content">
+          <h3>💰 Credit Risk Modeling Framework</h3>
+          <p>Developed comprehensive PD, LGD, and EAD frameworks with fraud detection systems, strengthening risk management for loan portfolios.</p>
+          <div class="project-tags">
+            <span class="tag">Risk Analytics</span>
+            <span class="tag">ML Models</span>
+            <span class="tag">BFSI</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="project-card">
+        <div class="project-content">
+          <h3>📄 Policy Intelligence Platform</h3>
+          <p>Architected Databricks pipeline processing 200k+ insurance documents with NLP classification achieving 95% accuracy in semantic matching.</p>
+          <div class="project-tags">
+            <span class="tag">NLP</span>
+            <span class="tag">Databricks</span>
+            <span class="tag">Big Data</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="project-card">
+        <div class="project-content">
+          <h3>🎙️ Speech-to-Text AI Summarizer</h3>
+          <p>Built NLP-powered system to transcribe and summarize CEO meeting discussions, automating executive documentation workflows.</p>
+          <div class="project-tags">
+            <span class="tag">NLP</span>
+            <span class="tag">Speech Recognition</span>
+            <span class="tag">Automation</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="project-card">
+        <div class="project-content">
+          <h3>🚗 Driver Behavior Analysis</h3>
+          <p>Developed ML classification model analyzing ECU data for real-time insurance premium calculation based on driving patterns.</p>
+          <div class="project-tags">
+            <span class="tag">ML Classification</span>
+            <span class="tag">IoT Analytics</span>
+            <span class="tag">Automotive</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="project-card">
+        <div class="project-content">
+          <h3>🎯 Customer Segmentation Engine</h3>
+          <p>Identified high-quality customer segment (5% of unique customers) using advanced analytics, boosting engagement by 10%.</p>
+          <div class="project-tags">
+            <span class="tag">Segmentation</span>
+            <span class="tag">Predictive Analytics</span>
+            <span class="tag">Growth</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- HOBBIES -->
+  <section id="hobbies" class="section">
+    <h2 class="section-title">Beyond The Code</h2>
+    <p class="section-subtitle">Passions That Fuel Innovation</p>
+    <div class="hobbies-grid">
+      <div class="hobby-card">
+        <div class="hobby-icon">📚</div>
+        <h3>Continuous Learning</h3>
+        <p>Staying ahead with latest AI research papers, courses, and emerging technologies in ML/AI space.</p>
+      </div>
+      <div class="hobby-card">
+        <div class="hobby-icon">🎓</div>
+        <h3>Mentoring</h3>
+        <p>Guiding aspiring data scientists through their learning journey and career transitions.</p>
+      </div>
+      <div class="hobby-card">
+        <div class="hobby-icon">✍️</div>
+        <h3>Technical Writing</h3>
+        <p>Sharing insights on AI/ML implementations, best practices, and industry trends.</p>
+      </div>
+      <div class="hobby-card">
+        <div class="hobby-icon">🔬</div>
+        <h3>Research & Innovation</h3>
+        <p>Exploring cutting-edge GenAI applications and experimenting with novel ML architectures.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- CERTIFICATIONS -->
   <section id="certifications" class="section">
-    <h2>Certifications & Education</h2>
-    <ul>
-      <li>Databricks Certified Machine Learning Associate</li>
-      <li>TensorFlow Developer Certification</li>
-      <li>LangChain Generative AI Specialization</li>
-      <li>PGP in Data Science – IIIT Bangalore (3.76/4)</li>
-      <li>B.Tech – VIT Vellore (9.07/10)</li>
-    </ul>
+    <h2 class="section-title">Certifications & Education</h2>
+    <p class="section-subtitle">Continuous Professional Development</p>
+    <div class="cert-grid">
+      <div class="cert-item">
+        <div class="cert-icon">🎓</div>
+        <div class="cert-text">
+          <h4>PGP in Data Science</h4>
+          <p>IIIT Bangalore (3.76/4) | 2021-2022</p>
+        </div>
+      </div>
+      <div class="cert-item">
+        <div class="cert-icon">🎓</div>
+        <div class="cert-text">
+          <h4>B.Tech in Engineering</h4>
+          <p>VIT Vellore (9.07/10) | 2012-2016</p>
+        </div>
+      </div>
+      <div class="cert-item">
+        <div class="cert-icon">⚡</div>
+        <div class="cert-text">
+          <h4>Databricks ML Associate</h4>
+          <p>Certified Machine Learning Professional</p>
+        </div>
+      </div>
+      <div class="cert-item">
+        <div class="cert-icon">🤖</div>
+        <div class="cert-text">
+          <h4>TensorFlow Developer</h4>
+          <p>Google TensorFlow Certification</p>
+        </div>
+      </div>
+      <div class="cert-item">
+        <div class="cert-icon">🔗</div>
+        <div class="cert-text">
+          <h4>LangChain GenAI</h4>
+          <p>Complete Generative AI Specialization</p>
+        </div>
+      </div>
+      <div class="cert-item">
+        <div class="cert-icon">🧠</div>
+        <div class="cert-text">
+          <h4>Deep Learning Specialization</h4>
+          <p>Deeplearning.AI Certification</p>
+        </div>
+      </div>
+      <div class="cert-item">
+        <div class="cert-icon">📊</div>
+        <div class="cert-text">
+          <h4>MLOps Specialization</h4>
+          <p>Production ML Systems</p>
+        </div>
+      </div>
+      <div class="cert-item">
+        <div class="cert-icon">💬</div>
+        <div class="cert-text">
+          <h4>NLP Specialization</h4>
+          <p>Natural Language Processing Expert</p>
+        </div>
+      </div>
+      <div class="cert-item">
+        <div class="cert-icon">💳</div>
+        <div class="cert-text">
+          <h4>Credit Risk Modeling</h4>
+          <p>Advanced Python Implementation</p>
+        </div>
+      </div>
+    </div>
   </section>
 
-  <!-- ===== CONTACT ===== -->
+  <!-- CONTACT -->
   <section id="contact" class="section">
-    <h2>Contact</h2>
-    <p class="contact-info">
-      You can reach me at 
-      <a href="mailto:saurabhsingh.pr@gmail.com">saurabhsingh.pr@gmail.com</a> or connect with me on 
-      <a href="https://www.linkedin.com/in/saurabhsinghds/" target="_blank">LinkedIn</a>.
-    </p>
+    <div class="contact-content">
+      <h2>Let's Build Something Amazing Together</h2>
+      <p>Whether it's a collaboration, consultation, or just a chat about AI/ML innovations – I'd love to connect!</p>
+      <div class="contact-links">
+        <a href="mailto:saurabhsingh.pr@gmail.com" class="contact-btn">📧 Email Me</a>
+        <a href="https://www.linkedin.com/in/saurabhsinghds/" target="_blank" class="contact-btn">💼 LinkedIn</a>
+        <a href="https://github.com/saurabhsingh1411" target="_blank" class="contact-btn">💻 GitHub</a>
+      </div>
+    </div>
   </section>
 
-  <!-- ===== FOOTER ===== -->
+  <!-- FOOTER -->
   <footer>
-    <p>© 2025 Saurabh Singh | Designed with 💙 using minimalism</p>
+    <p>© 2025 Saurabh Singh | Crafted with passion for data and innovation</p>
+    <p style="margin-top: 10px; font-size: 14px;">Transforming Data into Intelligence, One Model at a Time</p>
   </footer>
+
+  <script>
+    // Navbar scroll effect
+    window.addEventListener('scroll', function() {
+      const navbar = document.querySelector('.navbar');
+      if (window.scrollY > 50) {
+        navbar.classList.add('scrolled');
+      } else {
+        navbar.classList.remove('scrolled');
+      }
+    });
+
+    // Smooth scroll for navigation links
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function (e) {
+        e.preventDefault();
+        const target = document.querySelector(this.getAttribute('href'));
+        if (target) {
+          target.scrollIntoView({
+            behavior: 'smooth',
+            block: 'start'
+          });
+        }
+      });
+    });
+
+    // Intersection Observer for fade-in animations
+    const observerOptions = {
+      threshold: 0.1,
+      rootMargin: '0px 0px -50px 0px'
+    };
+
+    const observer = new IntersectionObserver(function(entries) {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.style.opacity = '1';
+          entry.target.style.transform = 'translateY(0)';
+        }
+      });
+    }, observerOptions);
+
+    // Observe all sections
+    document.querySelectorAll('.section').forEach(section => {
+      section.style.opacity = '0';
+      section.style.transform = 'translateY(30px)';
+      section.style.transition = 'all 0.8s ease';
+      observer.observe(section);
+    });
+  </script>
 </body>
 </html>
